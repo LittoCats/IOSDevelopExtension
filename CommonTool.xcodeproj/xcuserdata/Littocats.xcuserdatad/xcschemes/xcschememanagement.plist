@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SuperCalendar.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>A16652481AB9172A00559CDD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A1FEB12B1AB3DD1F003EAD66</key>
 		<dict>
 			<key>primary</key>

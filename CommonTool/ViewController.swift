@@ -10,10 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var yesrField: UITextField!
+    @IBOutlet weak var monthField: UITextField!
+    @IBOutlet weak var dayField: UITextField!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBAction func toSolar(sender: AnyObject) {
+//        var date = NSDate(lunarYear: yesrField.text.toInt()!, month: monthField.text.toInt()!, day: dayField.text.toInt()!)
+//        resultLabel.text = "公历为： \(date.lunar.solarYear) 年 \(date.lunar.solarMonth) 月 \(date.lunar.solarDay) 日"
+    }
+    @IBAction func toLunar(sender: AnyObject) {
+//        var date = NSDate(solarYear: yesrField.text.toInt()!, month: monthField.text.toInt()!, day: dayField.text.toInt()!)
+//        resultLabel.text = "农历为： \(date.lunar.lunarYear) 年 \(date.lunar.lunarMonth) 月 \(date.lunar.lunarDay) 日"
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+//        NSDate.initEasyCalendar(context: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -42,13 +55,15 @@ class ViewController: UIViewController {
 //            .set(borderColor: UIColor.greenColor())
 //        self.view.addSubview(button)
         
-        var scrollView: UIScrollView = UIScrollView(frame: CGRectMake(100, 100, 100, 480))
-            .set(backgroundColor: UIColor.lightGrayColor())
-            .set(contentSize: CGSizeMake(100, 960))
-            .set(prefixView: UIView(frame: CGRectMake(0, 0, 100, 44))
-                .set(backgroundColor: UIColor.yellowColor()))
+//        var scrollView: UIScrollView = UIScrollView(frame: CGRectMake(100, 100, 100, 480))
+//            .set(backgroundColor: UIColor.lightGrayColor())
+//            .set(contentSize: CGSizeMake(100, 960))
+//            .set(prefixView: UIView(frame: CGRectMake(0, 0, 100, 44))
+//                .set(backgroundColor: UIColor.yellowColor()))
+//        
+//        self.view.addSubview(scrollView)
         
-        self.view.addSubview(scrollView)
+        
     }
     
     func buttonAction(sender: UIButton){

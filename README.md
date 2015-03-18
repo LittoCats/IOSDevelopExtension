@@ -9,6 +9,9 @@
 * UIScroll 添加 prefixview/suffixView
 * UIColor 添加 script 方法
 
+* NSDate 添加公历、农历转换
+
+
 #### 属性设置
 
 ```
@@ -35,6 +38,16 @@ UIAlertView(title: nil, message: "Alert with colusure", cancelButtonTitle: "Canc
                 })
 	.show()
 ```
+
+#### 公历、农历转换
+
+公历、农历转换使用的是 JavaScript 实现，依赖 JavaScriptCore。
+第一次使用前需要调用
+
+```
+NSDate.LunarComponent.externalInit(context: nil)
+```
+`context` 为 JSContext 实例，context == nil 时，使用默认的 context
 
 
 *** 代码使用比较简单，其它的暂不做使用说明 ***

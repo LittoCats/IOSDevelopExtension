@@ -8,6 +8,7 @@
 
 import UIKit
 
+/****************************************************** UIView ***************************************************************/
 struct ToastPosition: RawOptionSetType{
     typealias RawValue = UInt
     private var value: RawValue = 0x0000
@@ -129,12 +130,8 @@ extension UIView {
 extension UIView {
     final class IndicatorView: UIView {
         var message: String?{
-            set{
-                messageLabel.text = newValue
-            }
-            get{
-                return messageLabel.text
-            }
+            set{messageLabel.text = newValue}
+            get{return messageLabel.text}
         }
         var serialNum: Int = 0{
             didSet{
@@ -464,8 +461,8 @@ extension UITableView {
 
 /****************************************************** UIScrollView ***************************************************************/
 @objc protocol UIScrollViewPreOrSuffixViewProtocol: NSObjectProtocol {
-    optional func prefix(#view: UIView, didMove offset: CGFloat)
-    optional func suffix(#view: UIView, didMove offset: CGFloat)
+    optional func prefix(#view: UIView, inScrollView scrollView: UIScrollView, didMove offset: CGFloat)
+    optional func suffix(#view: UIView, inScrollView scrollView: UIScrollView, didMove offset: CGFloat)
 }
 extension UIScrollView {
     private struct PSFixDefine {
@@ -528,7 +525,7 @@ extension UIScrollView {
                     scrollView!.prefixView!.frame = frame
                     scrollView!.addSubview(scrollView!.prefixView!)
                 }
-                (scrollView?.prefixView as? UIScrollViewPreOrSuffixViewProtocol)?.prefix?(view: scrollView!.prefixView!, didMove: 0 - scrollView!.contentOffset.y)
+                (scrollView?.prefixView as? UIScrollViewPreOrSuffixViewProtocol)?.prefix?(view: scrollView!.prefixView!, inScrollView: scrollView!, didMove: 0 - scrollView!.contentOffset.y)
             }else{
                 scrollView!.prefixView?.removeFromSuperview()
             }
@@ -540,7 +537,7 @@ extension UIScrollView {
                     scrollView!.suffixView!.frame = frame
                     scrollView!.addSubview(scrollView!.suffixView!)
                 }
-                (scrollView?.suffixView as? UIScrollViewPreOrSuffixViewProtocol)?.prefix?(view: scrollView!.suffixView!, didMove: scrollView!.contentOffset.y - scrollView!.contentSize.height)
+                (scrollView?.suffixView as? UIScrollViewPreOrSuffixViewProtocol)?.prefix?(view: scrollView!.suffixView!, inScrollView: scrollView!, didMove: scrollView!.contentOffset.y - scrollView!.contentSize.height)
             }else{
                 scrollView!.suffixView?.removeFromSuperview()
             }

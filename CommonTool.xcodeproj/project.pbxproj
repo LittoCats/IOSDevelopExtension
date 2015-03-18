@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A166524C1AB9172A00559CDD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A166524B1AB9172A00559CDD /* main.swift */; };
+		A16652501AB9174C00559CDD /* FoundationCommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F6B9FC1AB68939001B736A /* FoundationCommonTool.swift */; };
+		A1F6B9FD1AB68939001B736A /* FoundationCommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F6B9FC1AB68939001B736A /* FoundationCommonTool.swift */; };
 		A1FEB1321AB3DD1F003EAD66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEB1311AB3DD1F003EAD66 /* AppDelegate.swift */; };
 		A1FEB1341AB3DD1F003EAD66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEB1331AB3DD1F003EAD66 /* ViewController.swift */; };
 		A1FEB1371AB3DD1F003EAD66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FEB1351AB3DD1F003EAD66 /* Main.storyboard */; };
@@ -26,7 +29,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A16652471AB9172A00559CDD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A16652491AB9172A00559CDD /* SuperCalendar */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SuperCalendar; sourceTree = BUILT_PRODUCTS_DIR; };
+		A166524B1AB9172A00559CDD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A1F6B9FC1AB68939001B736A /* FoundationCommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationCommonTool.swift; sourceTree = "<group>"; };
 		A1FEB12C1AB3DD1F003EAD66 /* CommonTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommonTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FEB1301AB3DD1F003EAD66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1FEB1311AB3DD1F003EAD66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +59,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A16652461AB9172A00559CDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1FEB1291AB3DD1F003EAD66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,11 +83,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A166524A1AB9172A00559CDD /* SuperCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				A166524B1AB9172A00559CDD /* main.swift */,
+			);
+			path = SuperCalendar;
+			sourceTree = "<group>";
+		};
 		A1FEB1231AB3DD1F003EAD66 = {
 			isa = PBXGroup;
 			children = (
 				A1FEB12E1AB3DD1F003EAD66 /* CommonTool */,
 				A1FEB1441AB3DD20003EAD66 /* CommonToolTests */,
+				A166524A1AB9172A00559CDD /* SuperCalendar */,
 				A1FEB12D1AB3DD1F003EAD66 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +106,7 @@
 			children = (
 				A1FEB12C1AB3DD1F003EAD66 /* CommonTool.app */,
 				A1FEB1411AB3DD20003EAD66 /* CommonToolTests.xctest */,
+				A16652491AB9172A00559CDD /* SuperCalendar */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +121,7 @@
 				A1FEB13A1AB3DD1F003EAD66 /* LaunchScreen.xib */,
 				A1FEB12F1AB3DD1F003EAD66 /* Supporting Files */,
 				A1FEB1531AB3DEB8003EAD66 /* UIKitCommonTool.swift */,
+				A1F6B9FC1AB68939001B736A /* FoundationCommonTool.swift */,
 			);
 			path = CommonTool;
 			sourceTree = "<group>";
@@ -118,6 +154,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A16652481AB9172A00559CDD /* SuperCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A166524F1AB9172A00559CDD /* Build configuration list for PBXNativeTarget "SuperCalendar" */;
+			buildPhases = (
+				A16652451AB9172A00559CDD /* Sources */,
+				A16652461AB9172A00559CDD /* Frameworks */,
+				A16652471AB9172A00559CDD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuperCalendar;
+			productName = SuperCalendar;
+			productReference = A16652491AB9172A00559CDD /* SuperCalendar */;
+			productType = "com.apple.product-type.tool";
+		};
 		A1FEB12B1AB3DD1F003EAD66 /* CommonTool */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1FEB14B1AB3DD20003EAD66 /* Build configuration list for PBXNativeTarget "CommonTool" */;
@@ -162,6 +215,9 @@
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = Littocats;
 				TargetAttributes = {
+					A16652481AB9172A00559CDD = {
+						CreatedOnToolsVersion = 6.2;
+					};
 					A1FEB12B1AB3DD1F003EAD66 = {
 						CreatedOnToolsVersion = 6.2;
 					};
@@ -186,6 +242,7 @@
 			targets = (
 				A1FEB12B1AB3DD1F003EAD66 /* CommonTool */,
 				A1FEB1401AB3DD20003EAD66 /* CommonToolTests */,
+				A16652481AB9172A00559CDD /* SuperCalendar */,
 			);
 		};
 /* End PBXProject section */
@@ -211,6 +268,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A16652451AB9172A00559CDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A16652501AB9174C00559CDD /* FoundationCommonTool.swift in Sources */,
+				A166524C1AB9172A00559CDD /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1FEB1281AB3DD1F003EAD66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +284,7 @@
 				A1FEB1541AB3DEB8003EAD66 /* UIKitCommonTool.swift in Sources */,
 				A1FEB1341AB3DD1F003EAD66 /* ViewController.swift in Sources */,
 				A1FEB1321AB3DD1F003EAD66 /* AppDelegate.swift in Sources */,
+				A1F6B9FD1AB68939001B736A /* FoundationCommonTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +326,29 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A166524D1AB9172A00559CDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A166524E1AB9172A00559CDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		A1FEB1491AB3DD20003EAD66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -397,6 +487,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A166524F1AB9172A00559CDD /* Build configuration list for PBXNativeTarget "SuperCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A166524D1AB9172A00559CDD /* Debug */,
+				A166524E1AB9172A00559CDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A1FEB1271AB3DD1F003EAD66 /* Build configuration list for PBXProject "CommonTool" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -413,6 +511,7 @@
 				A1FEB14D1AB3DD20003EAD66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A1FEB14E1AB3DD20003EAD66 /* Build configuration list for PBXNativeTarget "CommonToolTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +520,7 @@
 				A1FEB1501AB3DD20003EAD66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
