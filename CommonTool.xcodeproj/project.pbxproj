@@ -8,15 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		A166524C1AB9172A00559CDD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A166524B1AB9172A00559CDD /* main.swift */; };
-		A16652501AB9174C00559CDD /* FoundationCommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F6B9FC1AB68939001B736A /* FoundationCommonTool.swift */; };
-		A1F6B9FD1AB68939001B736A /* FoundationCommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F6B9FC1AB68939001B736A /* FoundationCommonTool.swift */; };
+		A1CFBB981ABBAF72001BA42C /* ScriptLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFBB971ABBAF72001BA42C /* ScriptLibrary.swift */; };
+		A1CFBB9D1ABBB37A001BA42C /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CFBB9C1ABBB37A001BA42C /* CommonTool.swift */; };
+		A1CFBBA01ABBC574001BA42C /* ScriptsLibrary in Resources */ = {isa = PBXBuildFile; fileRef = A1CFBB9F1ABBC574001BA42C /* ScriptsLibrary */; };
+		A1F6B9FD1AB68939001B736A /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F6B9FC1AB68939001B736A /* FoundationExtension.swift */; };
 		A1FEB1321AB3DD1F003EAD66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEB1311AB3DD1F003EAD66 /* AppDelegate.swift */; };
 		A1FEB1341AB3DD1F003EAD66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEB1331AB3DD1F003EAD66 /* ViewController.swift */; };
 		A1FEB1371AB3DD1F003EAD66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1FEB1351AB3DD1F003EAD66 /* Main.storyboard */; };
 		A1FEB1391AB3DD1F003EAD66 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1FEB1381AB3DD1F003EAD66 /* Images.xcassets */; };
 		A1FEB13C1AB3DD1F003EAD66 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1FEB13A1AB3DD1F003EAD66 /* LaunchScreen.xib */; };
 		A1FEB1481AB3DD20003EAD66 /* CommonToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEB1471AB3DD20003EAD66 /* CommonToolTests.swift */; };
-		A1FEB1541AB3DEB8003EAD66 /* UIKitCommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEB1531AB3DEB8003EAD66 /* UIKitCommonTool.swift */; };
+		A1FEB1541AB3DEB8003EAD66 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FEB1531AB3DEB8003EAD66 /* UIKitExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +46,10 @@
 /* Begin PBXFileReference section */
 		A16652491AB9172A00559CDD /* SuperCalendar */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SuperCalendar; sourceTree = BUILT_PRODUCTS_DIR; };
 		A166524B1AB9172A00559CDD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		A1F6B9FC1AB68939001B736A /* FoundationCommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationCommonTool.swift; sourceTree = "<group>"; };
+		A1CFBB971ABBAF72001BA42C /* ScriptLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptLibrary.swift; sourceTree = "<group>"; };
+		A1CFBB9C1ABBB37A001BA42C /* CommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTool.swift; sourceTree = "<group>"; };
+		A1CFBB9F1ABBC574001BA42C /* ScriptsLibrary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ScriptsLibrary; sourceTree = "<group>"; };
+		A1F6B9FC1AB68939001B736A /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		A1FEB12C1AB3DD1F003EAD66 /* CommonTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommonTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FEB1301AB3DD1F003EAD66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1FEB1311AB3DD1F003EAD66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +60,7 @@
 		A1FEB1411AB3DD20003EAD66 /* CommonToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FEB1461AB3DD20003EAD66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1FEB1471AB3DD20003EAD66 /* CommonToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonToolTests.swift; sourceTree = "<group>"; };
-		A1FEB1531AB3DEB8003EAD66 /* UIKitCommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitCommonTool.swift; sourceTree = "<group>"; };
+		A1FEB1531AB3DEB8003EAD66 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +125,11 @@
 				A1FEB1381AB3DD1F003EAD66 /* Images.xcassets */,
 				A1FEB13A1AB3DD1F003EAD66 /* LaunchScreen.xib */,
 				A1FEB12F1AB3DD1F003EAD66 /* Supporting Files */,
-				A1FEB1531AB3DEB8003EAD66 /* UIKitCommonTool.swift */,
-				A1F6B9FC1AB68939001B736A /* FoundationCommonTool.swift */,
+				A1FEB1531AB3DEB8003EAD66 /* UIKitExtension.swift */,
+				A1F6B9FC1AB68939001B736A /* FoundationExtension.swift */,
+				A1CFBB9C1ABBB37A001BA42C /* CommonTool.swift */,
+				A1CFBB971ABBAF72001BA42C /* ScriptLibrary.swift */,
+				A1CFBB9F1ABBC574001BA42C /* ScriptsLibrary */,
 			);
 			path = CommonTool;
 			sourceTree = "<group>";
@@ -255,6 +263,7 @@
 				A1FEB1371AB3DD1F003EAD66 /* Main.storyboard in Resources */,
 				A1FEB13C1AB3DD1F003EAD66 /* LaunchScreen.xib in Resources */,
 				A1FEB1391AB3DD1F003EAD66 /* Images.xcassets in Resources */,
+				A1CFBBA01ABBC574001BA42C /* ScriptsLibrary in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +281,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A16652501AB9174C00559CDD /* FoundationCommonTool.swift in Sources */,
 				A166524C1AB9172A00559CDD /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,10 +289,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1FEB1541AB3DEB8003EAD66 /* UIKitCommonTool.swift in Sources */,
+				A1FEB1541AB3DEB8003EAD66 /* UIKitExtension.swift in Sources */,
+				A1CFBB981ABBAF72001BA42C /* ScriptLibrary.swift in Sources */,
 				A1FEB1341AB3DD1F003EAD66 /* ViewController.swift in Sources */,
 				A1FEB1321AB3DD1F003EAD66 /* AppDelegate.swift in Sources */,
-				A1F6B9FD1AB68939001B736A /* FoundationCommonTool.swift in Sources */,
+				A1CFBB9D1ABBB37A001BA42C /* CommonTool.swift in Sources */,
+				A1F6B9FD1AB68939001B736A /* FoundationExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +504,7 @@
 				A166524E1AB9172A00559CDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A1FEB1271AB3DD1F003EAD66 /* Build configuration list for PBXProject "CommonTool" */ = {
 			isa = XCConfigurationList;

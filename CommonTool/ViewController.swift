@@ -15,18 +15,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var dayField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     @IBAction func toSolar(sender: AnyObject) {
-//        var date = NSDate(lunarYear: yesrField.text.toInt()!, month: monthField.text.toInt()!, day: dayField.text.toInt()!)
-//        resultLabel.text = "公历为： \(date.lunar.solarYear) 年 \(date.lunar.solarMonth) 月 \(date.lunar.solarDay) 日"
+        var date = NSDate.date(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: true)!
+        resultLabel.text = "公历为： \(date.lunarComponent.solarYear) 年 \(date.lunarComponent.solarMonth) 月 \(date.lunarComponent.solarDay) 日"
     }
     @IBAction func toLunar(sender: AnyObject) {
-//        var date = NSDate(solarYear: yesrField.text.toInt()!, month: monthField.text.toInt()!, day: dayField.text.toInt()!)
-//        resultLabel.text = "农历为： \(date.lunar.lunarYear) 年 \(date.lunar.lunarMonth) 月 \(date.lunar.lunarDay) 日"
+      var date = NSDate.date(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: false)!
+        resultLabel.text = "农历为： \(date.lunarComponent.lunarYear) 年 \(date.lunarComponent.lunarMonth) 月 \(date.lunarComponent.lunarDay) 日"
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        NSDate.initEasyCalendar(context: nil)
+        
+        NSDate.LunarComponent.externalInit(context: nil)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
