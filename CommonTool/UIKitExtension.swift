@@ -99,6 +99,18 @@ extension UIView {
     }
     
     /**
+    *   view 快照
+    */
+    func snap()-> UIImage{
+        UIGraphicsBeginImageContext(self.bounds.size)
+        var context = UIGraphicsGetCurrentContext()
+        self.layer.renderInContext(context)
+        var image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    /**
     *   扩展 set 方法
     *   返回值均为 self ，实现连续设置属性的 连点 语法
     */

@@ -23,6 +23,10 @@ class ViewController: UIViewController {
         resultLabel.text = "农历为： \(date.lunarComponent.lunarYear) 年 \(date.lunarComponent.lunarMonth) 月 \(date.lunarComponent.lunarDay) 日"
     }
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBAction func snap(sender: AnyObject) {
+        imageView.image = self.view.snap()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
