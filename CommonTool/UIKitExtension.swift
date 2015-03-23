@@ -490,8 +490,15 @@ extension UIScrollView {
         set{
             if prefixView == newValue {return}
             self.prefixView?.removeFromSuperview()
+            if self.prefixView != nil {
+                self.removeObserver(unsafeBitCast(UIScrollViewPreSufTarget.self, NSObject.self), forKeyPath: "contentOffset", context: unsafeBitCast(self.prefixView, UnsafeMutablePointer<Void>.self))
+                objc_setAssociatedObject(self.prefixView, &PSFixDefine.PreSufTargetKey, nil, objc_AssociationPolicy(OBJC_ASSOCIATION_ASSIGN))
+            }
             objc_setAssociatedObject(self, &PSFixDefine.PrefixViewKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-            if newValue != nil {self.PreSufTarget}
+            if newValue != nil {
+                objc_setAssociatedObject(newValue, &PSFixDefine.PreSufTargetKey, self, objc_AssociationPolicy(OBJC_ASSOCIATION_ASSIGN))
+                self.addObserver(unsafeBitCast(UIScrollViewPreSufTarget.self, NSObject.self), forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.Old, context: unsafeBitCast(newValue, UnsafeMutablePointer<Void>.self))
+            }
         }
     }
     var suffixView: UIView?{
@@ -501,64 +508,53 @@ extension UIScrollView {
         set{
             if suffixView == newValue {return}
             self.suffixView?.removeFromSuperview()
-            objc_setAssociatedObject(self, &PSFixDefine.SuffixViewKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-            if newValue != nil {self.PreSufTarget}
-        }
-    }
-    
-    private var PreSufTarget: UIScrollViewPreSufTarget{
-        get{
-            var instance: UIScrollViewPreSufTarget? = objc_getAssociatedObject(self, &PSFixDefine.PreSufTargetKey) as? UIScrollViewPreSufTarget
-            if instance == nil {
-                instance = UIScrollViewPreSufTarget(scrollView: self)
-                objc_setAssociatedObject(self, &PSFixDefine.PreSufTargetKey, instance, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            if self.suffixView != nil {
+                self.removeObserver(unsafeBitCast(UIScrollViewPreSufTarget.self, NSObject.self), forKeyPath: "contentOffset", context: unsafeBitCast(self, UnsafeMutablePointer<Void>.self))
+                objc_setAssociatedObject(self.suffixView, &PSFixDefine.PreSufTargetKey, nil, objc_AssociationPolicy(OBJC_ASSOCIATION_ASSIGN))
             }
-            return instance!
+            objc_setAssociatedObject(self, &PSFixDefine.SuffixViewKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            if newValue != nil {
+                objc_setAssociatedObject(newValue, &PSFixDefine.PreSufTargetKey, self, objc_AssociationPolicy(OBJC_ASSOCIATION_ASSIGN))
+                self.addObserver(unsafeBitCast(UIScrollViewPreSufTarget.self, NSObject.self), forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.Old, context: unsafeBitCast(newValue, UnsafeMutablePointer<Void>.self))
+            }
         }
     }
     
     final private class UIScrollViewPreSufTarget: NSObject {
-        weak var scrollView: UIScrollView? {
-            didSet{
-                oldValue?.removeObserver(self, forKeyPath: "contentOffset")
-                scrollView?.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.Old, context: UnsafeMutablePointer<Void>())
-            }
-        }
-        init(scrollView: UIScrollView){
-            super.init()
-            self.scrollView = scrollView
-            scrollView.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions.Old, context: UnsafeMutablePointer<Void>())
-        }
-        private override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-            if scrollView!.contentOffset.y < 0 && scrollView!.prefixView != nil{
-                if scrollView!.prefixView!.superview == nil {
-                    var frame: CGRect = scrollView!.prefixView!.bounds
-                    frame.origin.y = 0 - frame.size.height
-                    scrollView!.prefixView!.frame = frame
-                    scrollView!.addSubview(scrollView!.prefixView!)
+        private override class func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+            let view = unsafeBitCast(context, UIView.self)
+            let scrollView = objc_getAssociatedObject(view, &PSFixDefine.PreSufTargetKey) as UIScrollView
+            
+            if scrollView.prefixView == view {
+                if scrollView.contentOffset.y < 0 {
+                    if scrollView.prefixView!.superview == nil {
+                        scrollView.prefixView!.frame.origin.y = -scrollView.prefixView!.frame.height
+                        scrollView.addSubview(scrollView.prefixView!)
+                    }
+                    (scrollView.prefixView as? UIScrollViewPreOrSuffixViewProtocol)?.prefix?(view: scrollView.prefixView!, inScrollView: scrollView, didMove: 0 - scrollView.contentOffset.y)
+                }else{
+                    scrollView.prefixView?.removeFromSuperview()
                 }
-                (scrollView?.prefixView as? UIScrollViewPreOrSuffixViewProtocol)?.prefix?(view: scrollView!.prefixView!, inScrollView: scrollView!, didMove: 0 - scrollView!.contentOffset.y)
-            }else{
-                scrollView!.prefixView?.removeFromSuperview()
             }
             
-            if scrollView!.contentOffset.y > scrollView!.contentSize.height && scrollView!.suffixView != nil{
-                if scrollView!.prefixView!.superview == nil {
-                    var frame: CGRect = scrollView!.suffixView!.bounds
-                    frame.origin.y = scrollView!.contentSize.height
-                    scrollView!.suffixView!.frame = frame
-                    scrollView!.addSubview(scrollView!.suffixView!)
+            if scrollView.suffixView == view {
+                if scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.frame.height {
+                    if scrollView.prefixView!.superview == nil {
+                        scrollView.suffixView!.frame.origin.y = scrollView.contentSize.height
+                        scrollView.addSubview(scrollView.suffixView!)
+                    }
+                    (scrollView.suffixView as? UIScrollViewPreOrSuffixViewProtocol)?.prefix?(view: scrollView.suffixView!, inScrollView: scrollView, didMove: scrollView.contentOffset.y - scrollView.contentSize.height)
+                }else{
+                    scrollView.suffixView?.removeFromSuperview()
                 }
-                (scrollView?.suffixView as? UIScrollViewPreOrSuffixViewProtocol)?.prefix?(view: scrollView!.suffixView!, inScrollView: scrollView!, didMove: scrollView!.contentOffset.y - scrollView!.contentSize.height)
-            }else{
-                scrollView!.suffixView?.removeFromSuperview()
             }
+            
         }
     }
     
     // setter
     func set(#prefixView: UIView?)      ->Self{self.prefixView = prefixView; return self}
-    func set(#suffixView: UIView?)      ->Self{self.prefixView = suffixView; return self}
+    func set(#suffixView: UIView?)      ->Self{self.suffixView = suffixView; return self}
 }
 
 extension UIScrollView {

@@ -31,7 +31,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        NSDate.LunarComponent.externalInit(context: nil)
         
     }
     
@@ -61,13 +60,15 @@ class ViewController: UIViewController {
 //            .set(borderColor: UIColor.greenColor())
 //        self.view.addSubview(button)
         
-//        var scrollView: UIScrollView = UIScrollView(frame: CGRectMake(100, 100, 100, 480))
-//            .set(backgroundColor: UIColor.lightGrayColor())
-//            .set(contentSize: CGSizeMake(100, 960))
-//            .set(prefixView: UIView(frame: CGRectMake(0, 0, 100, 44))
-//                .set(backgroundColor: UIColor.yellowColor()))
-//        
-//        self.view.addSubview(scrollView)
+        var scrollView: UIScrollView = UIScrollView(frame: CGRectMake(100, 100, 100, 320))
+            .set(backgroundColor: UIColor.lightGrayColor())
+            .set(contentSize: CGSizeMake(100, 360))
+            .set(prefixView: UIView(frame: CGRectMake(0, 0, 100, 44))
+                .set(backgroundColor: UIColor.yellowColor()))
+            .set(suffixView:UIView(frame: CGRectMake(0, 0, 100, 44))
+                .set(backgroundColor: UIColor.purpleColor()))
+        
+        self.view.addSubview(scrollView)
         
         
     }
