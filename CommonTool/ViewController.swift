@@ -15,11 +15,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var dayField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     @IBAction func toSolar(sender: AnyObject) {
-        var date = NSDate.date(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: true)!
+        var date = NSDate(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: true)!
         resultLabel.text = "公历为： \(date.lunarComponent.solarYear) 年 \(date.lunarComponent.solarMonth) 月 \(date.lunarComponent.solarDay) 日"
     }
     @IBAction func toLunar(sender: AnyObject) {
-      var date = NSDate.date(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: false)!
+      var date = NSDate(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: false)!
         resultLabel.text = "农历为： \(date.lunarComponent.lunarYear) 年 \(date.lunarComponent.lunarMonth) 月 \(date.lunarComponent.lunarDay) 日"
     }
 

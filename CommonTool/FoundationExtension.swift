@@ -36,20 +36,20 @@ x		: +08			//表示当前时区
 x 		: +08			//表示当前时区
 */
 extension NSDate {
-    class func date(#script: NSString, format: NSString = "yyyy-MM-dd HH:mm:ss", lunar: Bool = false) -> NSDate?{
+    convenience init?(script: NSString, format: NSString = "yyyy-MM-dd HH:mm:ss", lunar: Bool = false){
         var dateFormatter: NSDateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = format
         var temp = dateFormatter.dateFromString(script)
-        if temp == nil {return nil}
+        if temp == nil {self.init();return nil}
         if lunar {
             var lunarComponent = LunarComponent(solarYear: temp!.string(format: "yyyy").toInt()!, month: temp!.string(format: "MM").toInt()!, day: temp!.string(format: "dd").toInt()!)
-            if lunarComponent.info == nil {return nil}
+            if lunarComponent.info == nil {self.init();return nil}
             
             dateFormatter.dateFormat = "yyyy-MM-dd"
             temp = dateFormatter.dateFromString(NSString(format: "%.4i-%.2i-%.2i", lunarComponent.solarYear, lunarComponent.solarMonth, lunarComponent.solarDay))
-            objc_setAssociatedObject(temp!, &LunarComponent.Lib.LunarComponentKey, lunarComponent, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
         }
-        return temp
+        self.init(timeIntervalSinceReferenceDate: temp!.timeIntervalSinceReferenceDate)
+        objc_setAssociatedObject(temp!, &LunarComponent.Lib.LunarComponentKey, lunarComponent, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
     }
     
     func string(#format: String) ->String{
