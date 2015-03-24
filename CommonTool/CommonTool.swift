@@ -16,7 +16,6 @@ class CommonTool: NSObject {
     
     override class func load(){
         CoffeeScript.externalInit(StaticContext.jsContext)  // 初始化 CoffeeScript 编译器，必须为第一个
-        NSDate.LunarComponent.externalInit(context: StaticContext.jsContext)
     }
 }
 

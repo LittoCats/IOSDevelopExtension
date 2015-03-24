@@ -15,12 +15,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var dayField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     @IBAction func toSolar(sender: AnyObject) {
-        var date = NSDate(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: true)!
-        resultLabel.text = "公历为： \(date.lunarComponent.solarYear) 年 \(date.lunarComponent.solarMonth) 月 \(date.lunarComponent.solarDay) 日"
+//        var date = NSDate(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: true)!
+        var date = NSDate(lunarYear: yesrField.text.toInt()!, month: monthField.text.toInt()!, day: dayField.text.toInt()!)
+        resultLabel.text = "公历为： \(date!.lunar.components.SolarYear) 年 \(date!.lunar.components.SolarMonth) 月 \(date!.lunar.components.SolarDay) 日"
     }
     @IBAction func toLunar(sender: AnyObject) {
-      var date = NSDate(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: false)!
-        resultLabel.text = "农历为： \(date.lunarComponent.lunarYear) 年 \(date.lunarComponent.lunarMonth) 月 \(date.lunarComponent.lunarDay) 日"
+//      var date = NSDate(script: "\(yesrField.text.toInt()!)-\(monthField.text.toInt()!)-\(dayField.text.toInt()!)", format: "yyyy-MM-dd", lunar: false)!
+        var date = NSDate(year: yesrField.text.toInt()!, month: monthField.text.toInt()!, day: dayField.text.toInt()!)
+        resultLabel.text = "农历为： \(date!.lunar.components.LunarYearCN) \(date!.lunar.components.LunarMonthCN) \(date!.lunar.components.LunarDayCN)"
     }
 
     @IBOutlet weak var imageView: UIImageView!
@@ -60,15 +62,15 @@ class ViewController: UIViewController {
 //            .set(borderColor: UIColor.greenColor())
 //        self.view.addSubview(button)
         
-        var scrollView: UIScrollView = UIScrollView(frame: CGRectMake(100, 100, 100, 320))
-            .set(backgroundColor: UIColor.lightGrayColor())
-            .set(contentSize: CGSizeMake(100, 360))
-            .set(prefixView: UIView(frame: CGRectMake(0, 0, 100, 44))
-                .set(backgroundColor: UIColor.yellowColor()))
-            .set(suffixView:UIView(frame: CGRectMake(0, 0, 100, 44))
-                .set(backgroundColor: UIColor.purpleColor()))
-        
-        self.view.addSubview(scrollView)
+//        var scrollView: UIScrollView = UIScrollView(frame: CGRectMake(100, 100, 100, 320))
+//            .set(backgroundColor: UIColor.lightGrayColor())
+//            .set(contentSize: CGSizeMake(100, 360))
+//            .set(prefixView: UIView(frame: CGRectMake(0, 0, 100, 44))
+//                .set(backgroundColor: UIColor.yellowColor()))
+//            .set(suffixView:UIView(frame: CGRectMake(0, 0, 100, 44))
+//                .set(backgroundColor: UIColor.purpleColor()))
+//        
+//        self.view.addSubview(scrollView)
         
         
     }
