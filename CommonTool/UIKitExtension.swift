@@ -471,6 +471,60 @@ extension UITableView {
     func set(#separatorColor: UIColor!)             ->Self{self.separatorColor = separatorColor; return self}
 }
 
+/****************************************************** UITextField ***************************************************************/
+
+extension UITextField {
+    enum InputRuleType: Int {
+        case Null
+        case MoblilePhone
+        case Email
+        case Number
+        case Custom
+        
+        private struct Static {
+            static var AssociateKey = "InputRuleTypeAssociateKey"
+            static var ListenerOnceToken: dispatch_once_t = 0
+            
+            typealias InputRuleStaticFilter = (text: NSString, fullCheck: Bool)->String?
+            static var filter: [Int: InputRuleStaticFilter] = [
+                InputRuleType.Number.rawValue: { (text: NSString, fullCheck: Bool)->String? in
+                    text.stringByReplacingOccurrencesOfString("[^0-9]", withString: "", options: NSStringCompareOptions.RegularExpressionSearch, range: NSMakeRange(0, text.length))
+                }
+            ]
+        }
+    }
+    
+    var inputRuleType: InputRuleType{
+        get{
+            var type = objc_getAssociatedObject(self, &InputRuleType.Static.AssociateKey) as? Int
+            return type == nil ? InputRuleType.Null : InputRuleType(rawValue: type!)!
+        }set{
+            objc_setAssociatedObject(self, &InputRuleType.Static.AssociateKey, newValue.rawValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            UITextField.startInputRuleListener()
+        }
+    }
+    
+    private func applyInputRuleFilter(fullCheck: Bool){
+        var filter = InputRuleType.Static.filter[self.inputRuleType.rawValue]
+        if filter == nil || self.text == nil {return}
+        self.text = filter!(text: self.text, fullCheck: false)
+    }
+    
+    private class func startInputRuleListener(){
+        dispatch_once(&InputRuleType.Static.ListenerOnceToken, { () -> Void in
+            var notificationCenter = NSNotificationCenter.defaultCenter()
+            // text did changed
+            notificationCenter.addObserverForName(UITextFieldTextDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { (noti: NSNotification!) -> Void in
+                (noti.object as! UITextField).applyInputRuleFilter(false)
+            })
+            // did end editing
+            notificationCenter.addObserverForName(UITextFieldTextDidEndEditingNotification,object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { (noti: NSNotification!) -> Void in
+                (noti.object as! UITextField).applyInputRuleFilter(false)
+            })
+        })
+    }
+}
+
 /****************************************************** UIScrollView ***************************************************************/
 @objc protocol UIScrollViewPreOrSuffixViewProtocol: NSObjectProtocol {
     optional func prefix(#view: UIView, inScrollView scrollView: UIScrollView, didMove offset: CGFloat)
@@ -523,7 +577,7 @@ extension UIScrollView {
     final private class UIScrollViewPreSufTarget: NSObject {
         private override class func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
             let view = unsafeBitCast(context, UIView.self)
-            let scrollView = objc_getAssociatedObject(view, &PSFixDefine.PreSufTargetKey) as UIScrollView
+            let scrollView = objc_getAssociatedObject(view, &PSFixDefine.PreSufTargetKey) as! UIScrollView
             
             if scrollView.prefixView == view {
                 if scrollView.contentOffset.y < 0 {
@@ -608,7 +662,7 @@ extension UIColor {
         }else{
             var hex: NSString = SS.libColor.substringWithRange(range)
             hex = hex.substringWithRange(NSMakeRange(hex.length - 7, 7))
-            self.init(hex: hex)
+            self.init(hex: hex as String)
         }
     }
     

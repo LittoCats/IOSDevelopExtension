@@ -14,9 +14,9 @@ class CommonTool: NSObject {
         static var jsContext: JSContext = JSContext()
     }
     
-    override class func load(){
-        CoffeeScript.externalInit(StaticContext.jsContext)  // 初始化 CoffeeScript 编译器，必须为第一个
-    }
+//    override static func load(){
+//        CoffeeScript.externalInit(StaticContext.jsContext)  // 初始化 CoffeeScript 编译器，必须为第一个
+//    }
 }
 
 struct CoffeeScript {

@@ -13,13 +13,13 @@ struct ScriptLibrary {
     private static let root = NSBundle.mainBundle().bundlePath.stringByAppendingPathComponent("ScriptsLibrary")
     static var coffee_script_js: String{
         get{
-            return NSString(contentsOfFile: root.stringByAppendingPathComponent("coffeescript.js"), encoding: NSUTF8StringEncoding, error: nil)!
+            return NSString(contentsOfFile: root.stringByAppendingPathComponent("coffeescript.js"), encoding: NSUTF8StringEncoding, error: nil)! as String
         }
     }
     static var super_calendar_js: String{
         get{
             var script = NSString(contentsOfFile: root.stringByAppendingPathComponent("SuperCalendar.coffee"), encoding: NSUTF8StringEncoding, error: nil)!
-            return CoffeeScript.compile(script: script)
+            return CoffeeScript.compile(script: script as String)
         }
     }
 }

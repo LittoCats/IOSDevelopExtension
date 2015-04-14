@@ -554,7 +554,7 @@ extension NSDate.LunarComponent{
             var vstr: NSString = str.substringFromIndex(2)
             for index in 0..<vstr.length {
                 symbol = vstr.substringWithRange(NSMakeRange(index, 1))
-                value = IntSymbol.HEX[symbol]
+                value = IntSymbol.HEX[symbol as String]
                 if value == nil {return 0}
                 int |= value! << (4 * (vstr.length - index - 1))
             }
@@ -562,7 +562,7 @@ extension NSDate.LunarComponent{
             var vstr: NSString = str
             for index in 0..<vstr.length {
                 symbol = vstr.substringWithRange(NSMakeRange(index, 1))
-                value = IntSymbol.HEX[symbol]
+                value = IntSymbol.HEX[symbol as String]
                 if value == nil {return 0}
                 int += value! * Int(pow(10, Float((vstr.length - index - 1))))
             }

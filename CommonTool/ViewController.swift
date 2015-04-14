@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        yesrField.inputRuleType = UITextField.InputRuleType.Number
     }
     
     override func viewDidAppear(animated: Bool) {
